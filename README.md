@@ -44,5 +44,4 @@ Download from: https://www.kaggle.com/mlg-ulb/creditcardfraud
 
 ---
 
-## Author
-Professional Data Scientist & Python Developer
+

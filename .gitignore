@@ -1,0 +1,28 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+*.pyo
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Output
+# visualizations/   # (Uncomment to ignore visualizations, but currently we want to include them)
+# summary.txt       # (Uncomment to ignore summary, but currently we want to include it)
+# Virtual environments
+venv/
+.env/
+
+# Data files
+/data/
+*.csv
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/

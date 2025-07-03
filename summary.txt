@@ -1,0 +1,98 @@
+Dataset shape: (284807, 32)
+
+Columns and data types:
+Time      float64
+V1        float64
+V2        float64
+V3        float64
+V4        float64
+V5        float64
+V6        float64
+V7        float64
+V8        float64
+V9        float64
+V10       float64
+V11       float64
+V12       float64
+V13       float64
+V14       float64
+V15       float64
+V16       float64
+V17       float64
+V18       float64
+V19       float64
+V20       float64
+V21       float64
+V22       float64
+V23       float64
+V24       float64
+V25       float64
+V26       float64
+V27       float64
+V28       float64
+Amount    float64
+Class       int64
+Hour        int32
+dtype: object
+
+Summary statistics:
+           count  ...            max
+Time    284807.0  ...  172792.000000
+V1      284807.0  ...       2.454930
+V2      284807.0  ...      22.057729
+V3      284807.0  ...       9.382558
+V4      284807.0  ...      16.875344
+V5      284807.0  ...      34.801666
+V6      284807.0  ...      73.301626
+V7      284807.0  ...     120.589494
+V8      284807.0  ...      20.007208
+V9      284807.0  ...      15.594995
+V10     284807.0  ...      23.745136
+V11     284807.0  ...      12.018913
+V12     284807.0  ...       7.848392
+V13     284807.0  ...       7.126883
+V14     284807.0  ...      10.526766
+V15     284807.0  ...       8.877742
+V16     284807.0  ...      17.315112
+V17     284807.0  ...       9.253526
+V18     284807.0  ...       5.041069
+V19     284807.0  ...       5.591971
+V20     284807.0  ...      39.420904
+V21     284807.0  ...      27.202839
+V22     284807.0  ...      10.503090
+V23     284807.0  ...      22.528412
+V24     284807.0  ...       4.584549
+V25     284807.0  ...       7.519589
+V26     284807.0  ...       3.517346
+V27     284807.0  ...      31.612198
+V28     284807.0  ...      33.847808
+Amount  284807.0  ...   25691.160000
+Class   284807.0  ...       1.000000
+Hour    284807.0  ...      23.000000
+
+[32 rows x 8 columns]
+
+Class distribution:
+Class
+0    284315
+1       492
+Name: count, dtype: int64
+
+Total missing values: 0
+
+Duplicated rows: 1081
+
+
+Key Findings from Data Exploration:
+
+- The dataset contains 284807 transactions, with 492 (0.1727%) labeled as fraud.
+
+- No missing values detected. 1081 duplicated rows found.
+
+- Transaction amounts are highly skewed, with most transactions being low value.
+
+- Fraudulent transactions are extremely rare, highlighting severe class imbalance.
+
+- The 'Hour' variable (derived from 'Time') shows transaction activity by hour of the day (0–23).
+
+- Top features most correlated with fraud: V17, V14, V12, V10, V16

@@ -49,6 +49,7 @@ The held-out rows are separated before fitting the scaler. SMOTE is applied only
 Run focused checks with `python -m unittest discover -s tests`. Run the full pipeline with `python main.py` after installing `requirements.txt`; it can be slow on the full dataset.
 
 The 2026-11-10 rerun metrics and execution limits are in `VALIDATION_2026-11-10.md`. The ZIP's underlying dataset license is not established here; the repository code has no software license file.
+The core requirements use `imbalanced-learn`; XGBoost is optional and skipped when its native runtime is unavailable. The PR smoke workflow runs the synthetic preprocessing test on Python 3.12.
 
 **Repository description recommendation:** “Historical credit-card fraud classification with training-only scaling and SMOTE, untouched-test evaluation.”
 

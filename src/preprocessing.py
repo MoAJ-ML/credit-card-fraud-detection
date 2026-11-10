@@ -10,15 +10,19 @@ def preprocess_data(df, test_size=0.2, random_state=42):
     """
     X = df.drop('Class', axis=1)
     y = df['Class']
-    # Scaling
-    scaler = StandardScaler()
-    X_scaled = X.copy()
-    X_scaled[['Time', 'Amount']] = scaler.fit_transform(X[['Time', 'Amount']])
-    # Stratified split
+    # Holdout must be isolated before fitting any data-dependent transform.
     X_train, X_test, y_train, y_test = train_test_split(
-        X_scaled, y, test_size=test_size, stratify=y, random_state=random_state)
-    # SMOTE for balancing
-    smote = SMOTE(random_state=random_state)
+        X, y, test_size=test_size, stratify=y, random_state=random_state)
+    X_train, X_test = X_train.copy(), X_test.copy()
+    scaler = StandardScaler()
+    X_train[['Time', 'Amount']] = scaler.fit_transform(X_train[['Time', 'Amount']])
+    X_test[['Time', 'Amount']] = scaler.transform(X_test[['Time', 'Amount']])
+    # Resample training rows only. Any future cross-validation must put this
+    # transform and SMOTE inside each training fold.
+    minority_count = int(y_train.value_counts().min())
+    if minority_count < 2:
+        raise ValueError('SMOTE needs at least two minority samples in the training set')
+    smote = SMOTE(random_state=random_state, k_neighbors=min(5, minority_count - 1))
     X_train_bal, y_train_bal = smote.fit_resample(X_train, y_train)
     print(f"\nOriginal training set class distribution:\n{y_train.value_counts()}")
     print(f"\nBalanced training set class distribution (SMOTE):\n{y_train_bal.value_counts()}")

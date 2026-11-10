@@ -3,6 +3,4 @@ numpy
 matplotlib
 seaborn
 scikit-learn
-imblearn
-xgboost
-jupyter
+imbalanced-learn

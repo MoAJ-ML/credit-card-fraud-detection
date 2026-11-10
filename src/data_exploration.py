@@ -8,11 +8,11 @@ def load_and_explore_data(data_path='data/creditcard.csv', viz_dir='visualizatio
     """
     Loads the dataset, prints basic info, saves all visualizations, and writes a summary of findings.
     """
-    if not os.path.exists(data_path):
-        raise FileNotFoundError(f"Dataset not found at {data_path}. Please download and place it there.")
+    if not os.path.exists(data_path) and not os.path.exists('archive (2).zip'):
+        raise FileNotFoundError(f"Dataset not found at {data_path} or in archive (2).zip")
     os.makedirs(viz_dir, exist_ok=True)
     summary_lines = []
-    df = pd.read_csv(data_path)
+    df = pd.read_csv(data_path if os.path.exists(data_path) else 'archive (2).zip', compression='infer')
     # Format 'Time' as hours since first transaction
     df['Hour'] = ((df['Time'] // 3600) % 24).astype(int)  # Hour of day (0-23)
     # Dataset shape

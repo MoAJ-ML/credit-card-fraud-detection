@@ -12,10 +12,10 @@ def main():
     models, results = modeling.train_and_compare_models(X_train, X_test, y_train, y_test, X_train_bal, y_train_bal)
 
     # Step 4: Model Evaluation
-    evaluation.evaluate_models(models, results, X_test, y_test)
+    metrics = evaluation.evaluate_models(models, results, X_test, y_test)
 
     # Step 5: Results & Insights
-    evaluation.summarize_results(results)
+    evaluation.summarize_results(metrics)
 
 if __name__ == '__main__':
     main()
